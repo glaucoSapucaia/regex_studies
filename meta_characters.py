@@ -30,6 +30,7 @@
     [^a-z] => Anything other than a-z
 
 12. $ => Ends with
+
 '''
 
 import re
@@ -165,3 +166,10 @@ print(re.findall(r'^((?:[0-9]{3}\.){2}[0-9]{3}-[0-9]{2})$', enter3))
 # [^a-z] => Anything other than a-z
 print(re.findall(r'[^a-z]+', enter3))
 print(re.findall(r'[^0-9]+', enter3))
+print('_' * 100)
+
+# find letters except accents
+print(re.findall(r'[a-z]', enter, flags=re.I))
+
+# find words except accents
+print(re.findall(r'[a-z]+', enter, flags=re.I))

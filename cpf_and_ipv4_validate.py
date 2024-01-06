@@ -36,11 +36,12 @@ print('_' * 100)
 
 cpf_regex = re.compile(
     r"^(?!(\d)\1{2}\.\1{3}\.\1{3}-\1{2})(\d{3}\.\d{3}\.\d{3}-\d{2})$",
-    re.MULTILINE)
+    flags=re.MULTILINE)
 
 for cpf in cpf_regex.findall(cpf_4):
     _, cpf = cpf
     print(cpf)
+print('_' * 100)
 
 # IPV validate
 
@@ -88,5 +89,5 @@ ipv4_regex_short = re.compile(
 
 for i in range(301):
     ipv4 = f'{i}.{i}.{i}.{i}'
-    # print(ipv4, ipv4_regex.findall(ipv4))
-    # print(ipv4, ipv4_regex_short.findall(ipv4))
+    print(ipv4, ipv4_regex.findall(ipv4))
+    print(ipv4, ipv4_regex_short.findall(ipv4))

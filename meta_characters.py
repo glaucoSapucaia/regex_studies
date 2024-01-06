@@ -24,6 +24,12 @@
     ONLY in PYTHON
     Name a group => (?P<name>)
     Use a name group => (?P=name)
+
+11. ^ => Starts with
+    Denial (Inverse) value - negação
+    [^a-z] => Anything other than a-z
+
+12. $ => Ends with
 '''
 
 import re
@@ -68,6 +74,8 @@ enter2 = """
 """
 
 enter3 = '123.456.789-12'
+
+enter4 = 'a    123.456.789-12     b'
 
 # | => or example
 print(re.findall(r'Quem|Sabe|primeiro', enter))
@@ -146,3 +154,14 @@ print('_' * 100)
 
 # sub with groups
 print(re.sub(r'(<(.+?)>)(.*?)(<\/\2>)', r'\1ABC\4', enter2))
+print('_' * 100)
+
+# ^ => starts with and $ => ends with
+print(re.findall(r'((?:[0-9]{3}\.){2}[0-9]{3}-[0-9]{2})', enter4))
+print(re.findall(r'^((?:[0-9]{3}\.){2}[0-9]{3}-[0-9]{2})', enter4))
+print(re.findall(r'((?:[0-9]{3}\.){2}[0-9]{3}-[0-9]{2})$', enter4))
+print(re.findall(r'^((?:[0-9]{3}\.){2}[0-9]{3}-[0-9]{2})$', enter3))
+
+# [^a-z] => Anything other than a-z
+print(re.findall(r'[^a-z]+', enter3))
+print(re.findall(r'[^0-9]+', enter3))

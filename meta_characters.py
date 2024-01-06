@@ -12,6 +12,9 @@
     {, 10} => Zero or 10
     {2, 6} => Range(2, 6)
     {9} => Exact 9 occurrences
+
+8. backslash => Escape character 
+9. ? => non-greedy behavior and Range(0, 1)
 '''
 
 import re
@@ -51,6 +54,10 @@ Navegar primeiro, aportar depois
 Viver primeiro, morrer depois.
 """
 
+enter2 = """
+<p>Lorem1</p> <p>Lorrrem2</p> <p>Lo</p> <div></div>
+"""
+
 # | => or example
 print(re.findall(r'Quem|Sabe|primeiro', enter))
 print('_' * 100)
@@ -84,3 +91,12 @@ print(re.findall(r'Pos{1,}uir', enter))
 print(re.findall(r'Pos{,2}uir', enter))
 print(re.findall(r'Pos{2}uir', enter))
 print('_' * 100)
+
+# more complex examples
+# Greedy and non-greedy (lazy)
+# backslash => escape character "\"
+print(re.findall(r'<[dipv]{1,3}>.*<\/[dipv]{1,3}>', enter2))
+print('_' * 100)
+
+# non-greedy behavior => ?
+print(re.findall(r'<[dipv]{1,3}>.*?<\/[dipv]{1,3}>', enter2))

@@ -3,7 +3,15 @@
 1. | => or
 2. . => Any character, EXCEPT line break
 3. [] => Character SET
-4. - => range
+4. - => Range
+
+# qunatitative meta characters
+5. + => One or several characters
+6. * => Zero or several characters
+7. {} => Zero, many or the exact occurrence
+    {, 10} => Zero or 10
+    {2, 6} => Range(2, 6)
+    {9} => Exact 9 occurrences
 '''
 
 import re
@@ -57,3 +65,22 @@ print('_' * 100)
 
 # - => range example
 print(re.findall(r'[a-zA-Z0-9]m', enter))
+print('_' * 100)
+
+# + => One or several characters
+print(re.findall(r'r+e', enter))
+print(re.sub(r'r+e', 'ABC', enter))
+print('_' * 100)
+
+# * => Zero or several characters
+print(re.sub(r'r*e', 'DEF', enter))
+print('_' * 100)
+
+# {} => Zero, many or the exact occurrence
+#     {, 10} => Zero or 10
+#     {2, 6} => Range(2, 6)
+#     {9} => Exact 9 occurrences
+print(re.findall(r'Pos{1,}uir', enter))
+print(re.findall(r'Pos{,2}uir', enter))
+print(re.findall(r'Pos{2}uir', enter))
+print('_' * 100)

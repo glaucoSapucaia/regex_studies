@@ -9,6 +9,7 @@ Use | for more than one flags
 3. MULTILINE or M => Parses the string by lines, not as a whole
 4. DOTALL or S => Allows the ' . ' read line breaks
 
+5. VERBOSE or X => Allows comments within the regular expression
 SHORTCUTS
 
 3. Accents
